@@ -1,0 +1,41 @@
+﻿@model List<RaceDayMVC.Models.EnrollmentViewModel>
+
+@{
+    ViewData["Title"] = "My Enrolments";
+}
+
+<div class="container mt-4">
+
+    <h2>My Enrolments</h2>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>You have no enrolments available.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Event ID</th>
+                    <th>Category ID</th>
+                    <th>Enrollment Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EventID</td>
+                        <td>@item.CategoryID</td>
+                        <td>@item.EnrollmentDate.ToString("dd MMM yyyy")</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

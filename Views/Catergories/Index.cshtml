@@ -1,0 +1,44 @@
+﻿@model List<RaceDayMVC.Models.CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Event Categories";
+}
+
+<div class="container mt-4">
+
+    <h2>Event Categories</h2>
+    <p>View the categories available for events.</p>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>No categories are currently available.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Event ID</th>
+                    <th>Distance (km)</th>
+                    <th>Entry Fee</th>
+                    <th>Maximum Participants</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CategoryName</td>
+                        <td>@item.EventID</td>
+                        <td>@item.DistanceKm</td>
+                        <td>R @item.EntryFee</td>
+                        <td>@item.MaximumParticipants</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

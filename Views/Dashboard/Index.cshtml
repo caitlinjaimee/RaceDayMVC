@@ -1,0 +1,51 @@
+﻿@model RaceDayMVC.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Organiser Dashboard";
+}
+
+<div class="container mt-4">
+
+    <h2>Organiser Dashboard</h2>
+    <p>Overview of your events.</p>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5>Total Events</h5>
+            <h2>@Model.TotalEvents</h2>
+        </div>
+    </div>
+
+    <h4>Upcoming Events</h4>
+
+    @if (Model.UpcomingEvents.Count == 0)
+    {
+        <p>No upcoming events available.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.UpcomingEvents)
+                {
+                    <tr>
+                        <td>@item.EventName</td>
+                        <td>@item.EventDate.ToString("dd MMM yyyy")</td>
+                        <td>@item.Location</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

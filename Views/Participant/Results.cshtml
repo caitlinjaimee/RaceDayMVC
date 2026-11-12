@@ -1,0 +1,42 @@
+﻿@model List<RaceDayMVC.Models.ResultViewModel>
+
+@{
+    ViewData["Title"] = "My Results";
+}
+
+<div class="container mt-4">
+
+    <h2>My Results</h2>
+    <p>View your previous race results.</p>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>No results are currently available.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Event ID</th>
+                    <th>Category ID</th>
+                    <th>Finish Time</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EventID</td>
+                        <td>@item.CategoryID</td>
+                        <td>@item.FinishTime</td>
+                        <td>@item.Position</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
